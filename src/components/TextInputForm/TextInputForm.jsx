@@ -35,7 +35,7 @@ function TextInputForm(onSubmit){
                     onChange = {handleTextInputChange}
                 />
                 <Button 
-                    styleType='warning'
+                    styleType="warning"
                     text={inputType === 'password' ? "Show" : "Hide"}
                     onClickHandler={() => setInputType(inputType === "password" ? "text" : "password")}
                 />
