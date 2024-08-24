@@ -22,7 +22,12 @@ function MaskedText({ text, usedLetters }) {
         <>
             {
                 letters.map((letter,index) => {
-                    return <span key='{letter-${index}}' className="inline-block mx-1 "> {letter}</span>
+                    return (
+                    <span 
+                        key='{letter-${index}}'
+                        className="inline-block mx-1 "
+                    > {letter}</span>
+                    );
                 })
             }
         </>

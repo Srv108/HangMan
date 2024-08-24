@@ -4,10 +4,15 @@ function GameAlphabet(){
     })
 
     return (
-        <div>
+        <div className="flex flex-wrap size-100">
             {
                 alphabet.map((char,index) => {
-                    return <button key='{char-${index}}' className="inline-block mx-1">{char}</button>
+                    return (
+                        <button 
+                            key='{char-${index}}' 
+                            className="inline-block mx-1 bg-slate-500 border-2 p-5 text-3xl"
+                        >{char}</button>
+                    );
                 })
             }
         </div>
