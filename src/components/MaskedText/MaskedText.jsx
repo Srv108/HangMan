@@ -1,35 +1,25 @@
-function MaskedText({ text, usedLetters }) {
+import getAllCharacters from "./MaskedTextUtilty";
 
-    function getAllCharacters(word, usedLetters) {
-        usedLetters = usedLetters.map(letter => { 
-            return letter.toUpperCase()}
-        );
-        const guessedLetters = new Set(usedLetters);
-        const rightGuessedLetters = word.toUpperCase().split('').map(char=>{
-            if(guessedLetters.has(char)){
-                return char;
-            }
-            return '_';
-        })
-        console.log(rightGuessedLetters);
-        return rightGuessedLetters.join('');
-    }
-    
+function MaskedText({ text, usedLetters}) {
+
     const letters = getAllCharacters(text, usedLetters).split('');
     console.log(`Letters to Render: ${letters}`); // Debugging output
 
+
     return (
         <>
-            {
-                letters.map((letter,index) => {
-                    return (
-                    <span 
-                        key='{letter-${index}}'
-                        className="inline-block mx-1 "
-                    > {letter}</span>
-                    );
-                })
-            }
+            <div className="flex justify-center text-3xl">
+                {
+                    letters.map((letter,index) => {
+                        return (
+                        <span 
+                            key='{letter-${index}}'
+                            className="inline-block mx-1 "
+                        > {letter}</span>
+                        );
+                    })
+                }
+            </div>
         </>
     );
 }
