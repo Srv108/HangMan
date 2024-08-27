@@ -14,7 +14,7 @@ function PlayGame(){
     const [isWinner, setIsWinner] = useState(false);
 
     useEffect(() => {
-        if (step >= 6) {
+        if (step > 6) {
             setIsGameOver(true);
             setIsWinner(false);
         } else if (wordSelected.toUpperCase().split('').every(letter => usedLetters.includes(letter))) {
@@ -44,7 +44,11 @@ function PlayGame(){
                 text={wordSelected} 
                 usedLetters={usedLetters}
             />
-
+            <input
+                type="checkbox"
+                value="synthwave"
+                className="toggle theme-controller col-span-2 col-start-1 row-start-1 border-sky-400 bg-amber-300 [--tglbg:theme(colors.sky.500)] checked:border-blue-800 checked:bg-blue-300 checked:[--tglbg:theme(colors.blue.900)]" 
+            />
             <hr className="my-8 border-primary" />
 
             <div className="flex flex-col lg:flex-row justify-center items-center lg:space-x-8 my-8">
@@ -65,7 +69,7 @@ function PlayGame(){
 
             <div className="text-center mt-6">
                 <Link 
-                    to="/Start" 
+                    to="/" 
                     className="text-lg text-secondary hover:underline">
                     Start Game
                 </Link>
