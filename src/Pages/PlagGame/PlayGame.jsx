@@ -78,8 +78,8 @@ function PlayGame(){
             {isGameOver && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                     <div className="bg-base-200 p-6 rounded-lg shadow-xl text-center">
-                        <h2 className="text-2xl font-bold text-primary">{isWinner ? "Congratulations!" : "Game Over!"}</h2>
-                        <p className="my-4 text-lg">{isWinner ? "You won the game!" : "Better luck next time!"}</p>
+                        <h2 className="text-2xl font-bold text-primary">{isWinner ? "Congratulations! 🎉🎉" : "Game Over!"}</h2>
+                        <p className="my-4 text-lg">{isWinner ? "You won the game!" : "Better luck next time! "}</p>
                         <button 
                             onClick={closeModal} 
                             className="bg-primary text-white px-4 py-2 rounded-md shadow-md hover:bg-secondary">
