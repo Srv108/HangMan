@@ -30,6 +30,7 @@ function PlayGame(){
         } else {
             setStep(step + 1);
             setUsedLetters([...usedLetters, letter]);
+            vibrate(100);
             console.log("Guessed Letter is InCorrect");
         }
     }
