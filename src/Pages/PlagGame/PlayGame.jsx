@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import MaskedText from "../../components/MaskedText/MaskedText";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GameAlphabet from "../../components/GameAlphabet/GameAlphabet";
 import Hangman from "../../components/Hangman/Hangman";
 
@@ -9,32 +9,40 @@ function PlayGame(){
     const wordSelected = location.state?.wordSelected; 
 
     const [step, setStep] = useState(0);
-
     const [usedLetters, setUsedLetters] = useState([]);
+    const [isGameOver, setIsGameOver] = useState(false);
+    const [isWinner, setIsWinner] = useState(false);
+
+    useEffect(() => {
+        if (step >= 6) {
+            setIsGameOver(true);
+            setIsWinner(false);
+        } else if (wordSelected.toUpperCase().split('').every(letter => usedLetters.includes(letter))) {
+            setIsGameOver(true);
+            setIsWinner(true);
+        }
+    }, [step, usedLetters, wordSelected]);
 
     function handleLetterClick(letter){
         if(wordSelected.toUpperCase().includes(letter)){
+            setUsedLetters([...usedLetters, letter]);
             console.log("Guessed Letter is Correct");
-        }else{
+        } else {
+            setStep(step + 1);
+            setUsedLetters([...usedLetters, letter]);
             console.log("Guessed Letter is InCorrect");
-            setStep(step+1);
         }
-        setUsedLetters([...usedLetters,letter]);
-        
     }
 
-    
-    
+    function closeModal() {
+        setIsGameOver(false);
+    }
+
     return (
         <div className="p-6 max-w-screen-lg mx-auto bg-base-200 shadow-xl rounded-lg">
-
-
-            {/* <h1 className="text-center text-4xl font-bold mb-6 text-primary">{wordSelected}</h1> */}
-
             <MaskedText 
                 text={wordSelected} 
                 usedLetters={usedLetters}
-
             />
 
             <hr className="my-8 border-primary" />
@@ -62,6 +70,20 @@ function PlayGame(){
                     Start Game
                 </Link>
             </div>
+
+            {isGameOver && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="bg-base-200 p-6 rounded-lg shadow-xl text-center">
+                        <h2 className="text-2xl font-bold text-primary">{isWinner ? "Congratulations!" : "Game Over!"}</h2>
+                        <p className="my-4 text-lg">{isWinner ? "You won the game!" : "Better luck next time!"}</p>
+                        <button 
+                            onClick={closeModal} 
+                            className="bg-primary text-white px-4 py-2 rounded-md shadow-md hover:bg-secondary">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

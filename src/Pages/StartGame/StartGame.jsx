@@ -13,7 +13,6 @@ function StartGame(){
     return(
 
         <div>
-            <h1> Start Game </h1>
             <TextInputFormContainer onSubmit={handleSubmit} />
         </div>
     );

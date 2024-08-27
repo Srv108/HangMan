@@ -21,10 +21,7 @@ function TextInputFormContainer({onSubmit}){
         setValue(event.target.value);
     }
 
-    // function toggleTextInputChange(){
-    //     if(type === "password") setType("text");
-    //     else setType("password");
-    // }
+    
 
     return(
         <TextInputForm

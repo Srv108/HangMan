@@ -8,26 +8,29 @@ function TextInputForm({handleFormSubmit,handleTextInputChange,value,inputType,s
 
     
     return (
-        <form className="flex" action="" onSubmit={handleFormSubmit}>
-            <div className="mr-2 flex-1">
+        <form className="flex items-center space-x-4 p-4 bg-base-200 rounded-lg shadow-lg justify-center" onSubmit={handleFormSubmit}>
+            <div className="flex flex-1 items-center justify-between">
+                {/* <h1> Enter a Word To Start The Game :     </h1> */}
                 <TextInput
-                    label = "Enter a phrase or a word"
-                    type = {inputType}
-                    value = {value}
-                    onChange = {handleTextInputChange}
+                    // label="Enter a word to start:"
+                    type={inputType}
+                    value={value}
+                    onChange={handleTextInputChange}
+                    className="input input-bordered input-primary w-full max-w-xs mb-4 m-2"
                 />
-                <Button 
+                <Button
                     styleType="warning"
                     text={inputType === 'password' ? "Show" : "Hide"}
                     onClickHandler={() => setInputType(inputType === "password" ? "text" : "password")}
+                    className="btn btn-warning btn-sm "
                 />
             </div>
-                <Button
-                    buttonType = "submit"
-                    text = "ok"
-                />
+            <Button
+                buttonType="submit"
+                text="OK"
+                className="btn btn-primary btn-lg"
+            />
         </form>
-
 
     );
 }
